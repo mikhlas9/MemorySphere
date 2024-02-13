@@ -24,7 +24,7 @@ export const BookmarkedQuestions = () => {
             };
 
             const { data } = await axios.get(
-                "/bookmarkedQuestions",
+                "https://memorysphere.onrender.com/bookmarkedQuestions",
                 config
             );
             setBookmarkedQuestions(data.userBookmark.bookmarked)
@@ -49,7 +49,7 @@ export const BookmarkedQuestions = () => {
             };
 
             await axios.delete(
-                `/bookmarkedQuestions/${id}`,
+                `https://memorysphere.onrender.com/bookmarkedQuestions/${id}`,
                 config
             );
             toast({

@@ -44,7 +44,7 @@ export const RightBox = () => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.post("/bookmarkedQuestions", { id }, config);
+            const { data } = await axios.post("https://memorysphere.onrender.com/bookmarkedQuestions", { id }, config);
 
             toast({
                 title: "Successful Added",
@@ -98,7 +98,7 @@ export const RightBox = () => {
                         Authorization: `Bearer ${user.token}`,
                     },
                 };
-                await axios.post("/correct", { id }, config);
+                await axios.post("https://memorysphere.onrender.com/correct", { id }, config);
             } catch (error) {
                 toast({
                     title: "Error",
@@ -122,7 +122,7 @@ export const RightBox = () => {
                         Authorization: `Bearer ${user.token}`,
                     },
                 };
-                await axios.post("/wrong", {}, config);
+                await axios.post("https://memorysphere.onrender.com/wrong", {}, config);
             } catch (error) {
                 toast({
                     title: "Error",
@@ -148,7 +148,7 @@ export const RightBox = () => {
                         Authorization: `Bearer ${user.token}`,
                     },
                 };
-                const { data } = await axios.post("/questions", { category }, config);
+                const { data } = await axios.post("https://memorysphere.onrender.com/questions", { category }, config);
                 await setQuestions(data)
             } catch (error) {
                 toast({
@@ -197,7 +197,7 @@ export const RightBox = () => {
             };
 
             const { data } = await axios.get(
-                "/info",
+                "https://memorysphere.onrender.com/info",
                 config
             );
             setTotal(data.userInfo.total);

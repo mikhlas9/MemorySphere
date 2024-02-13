@@ -45,7 +45,7 @@ export const AddQuestion = () => {
                         };
             
                         await axios.post(
-                            "/addQuestions",
+                            "https://memorysphere.onrender.com/addQuestions",
                             {
                                 category: addQuestion.category,
                                 question: addQuestion.question,

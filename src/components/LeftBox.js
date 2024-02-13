@@ -51,7 +51,7 @@ export const LeftBox = () => {
     const fetchCategory = async () => {
         try {
             const { data } = await axios.get(
-                "/category",
+                "https://memorysphere.onrender.com/category",
             );
             setCategories(data.categories)
         } catch (error) {
@@ -79,7 +79,7 @@ export const LeftBox = () => {
             };
 
             const { data } = await axios.get(
-                "/info",
+                "https://memorysphere.onrender.com/info",
                 config
             );
             setTotal(data.userInfo.total);
