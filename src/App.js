@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import react, { useEffect, useState } from "react";
+import {
+  Routes, 
+  Route
+} from "react-router-dom"
+import { Login } from "./screens/Login";
+import { Signup } from "./screens/Signup";
+import { Home } from "./screens/Home";
+import { AddQuestion } from "./screens/AddQuestion";
+import { QuestionState } from "./context/ContextProvider";
+import { BookmarkedQuestions } from "./screens/BookmarkedQuestions";
+
 
 function App() {
+  // const {category} = QuestionState();
+  // const [routePath, setRoutePath] = useState()
+
+  // useEffect(() => {
+  //   if (category) {
+  //     setRoutePath(`/:name/home/${category.toLowerCase()}`);
+  //     console.log(routePath);
+  //   } else {
+  //     setRoutePath("/:name/home");
+  //   }
+  // }, [category])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route exact path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/:name/home" element={<Home />} />
+        <Route path="/addQuestion" element={<AddQuestion />} />
+        <Route path="/:name/bookmark" element={<BookmarkedQuestions />} />
+      </Routes>
     </div>
   );
 }
