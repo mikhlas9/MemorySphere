@@ -56,7 +56,7 @@ export const Signup = () => {
         },
       };
       const data = await axios.post(
-        "/register",
+        "https://memorysphere.onrender.com/register",
         {
           name,
           email,

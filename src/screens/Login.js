@@ -50,7 +50,7 @@ export const Login = () => {
             };
 
             const { data } = await axios.post(
-                "/login",
+                "https://memorysphere.onrender.com/login",
                 { email, password },
                 config
             );
