@@ -9,6 +9,7 @@ import {
     FormLabel,
     Input,
     Button,
+    Textarea
 } from "@chakra-ui/react";
 import axios from 'axios';
 
@@ -128,7 +129,8 @@ export const AddQuestion = () => {
                         placeholder='Enter Category'
                     />
                     <FormLabel>Question</FormLabel>
-                    <Input
+                    <Textarea
+                        size="md"
                         type="text"
                         name="question"
                         value={addQuestion.question}
