@@ -261,7 +261,7 @@ export const RightBox = () => {
                         height={currentQuestion.question.length < 150 ? "15vh" : "20vh"}
                         margin="20px 10px 40px 20px"
                     >
-                        <Text fontSize="20px">{currentQuestion.question}</Text>
+                        <Text style={{wordWrap:"break-word", whiteSpace:"pre-wrap"}} fontSize="20px">{currentQuestion.question}</Text>
 
                     </Box>
 
