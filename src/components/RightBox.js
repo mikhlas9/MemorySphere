@@ -26,6 +26,7 @@ export const RightBox = () => {
     const [questions, setQuestions] = useState([]);
     const [answer, setAnswer] = useState("")
     const [answerColor, setAnswerColor] = useState(['', '', '', '']);
+    const [chooseColor, setChooseColor] = useState("choose")
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(null);
     const [displayCorrect, setDisplayCorrect] = useState(false)
@@ -74,6 +75,7 @@ export const RightBox = () => {
         setAnswerColor(['', '', '', '']);
         setDisplayCorrect(false)
         setDisable(false)
+        setChooseColor("choose")
         setCurrentTime(selectedTime); // Update currentTime with selectedTime
         setStartAgain(true);
     };
@@ -82,6 +84,7 @@ export const RightBox = () => {
 
     const checkAnswer = async (selectedOption, index) => {
         setDisable(true)
+        setChooseColor("")
 
         const updatedColors = [...answerColor];
 
@@ -173,6 +176,7 @@ export const RightBox = () => {
                 setCurrentTime((prevTime) => {
                     if (prevTime === 0) {
                         setDisable(true); // Disable when currentTime reaches 0
+                        setChooseColor("")
                         clearInterval(intervalId); // Stop the interval
                     }
                     return prevTime > 0 ? prevTime - 1 : prevTime;
@@ -259,14 +263,15 @@ export const RightBox = () => {
                         p={3}
                         w={{ base: "100%", md: "95%" }}
                         height={currentQuestion.question.length < 150 ? "15vh" : "20vh"}
+                       
                         margin="20px 10px 40px 20px"
                     >
-                        <Text style={{wordWrap:"break-word", whiteSpace:"pre-wrap"}} fontSize="20px">{currentQuestion.question}</Text>
+                        <Text style={{wordWrap:"break-word", whiteSpace:"pre-wrap"}} fontWeight="8"  fontSize={currentQuestion.question.length < 250 ? "20px" : "18px"}>{currentQuestion.question}</Text>
 
                     </Box>
 
                     {/* option 1 */}
-                    <Box className={`box choose ${answerColor[0]}`}
+                    <Box className={`box ${chooseColor} ${answerColor[0]}`}
                         onClick={() => checkAnswer(currentQuestion.options[0], 0)}
                         display={{ base: "flex", md: "flex" }}
                         flexDir="column"
@@ -278,13 +283,13 @@ export const RightBox = () => {
                     >
                         <Button height='8vh' isDisabled={disable}>
 
-                            <Text fontSize="20px">{currentQuestion.options[0]}</Text>
+                            <Text fontWeight="10" fontSize="20px">{currentQuestion.options[0]}</Text>
                         </Button>
 
                     </Box>
 
                     {/* option 2 */}
-                    <Box className={`box choose ${answerColor[1]}`}
+                    <Box className={`box ${chooseColor} ${answerColor[1]}`}
                         onClick={() => checkAnswer(currentQuestion.options[1], 1)}
                         display={{ base: "flex", md: "flex" }}
                         flexDir="column"
@@ -296,12 +301,12 @@ export const RightBox = () => {
                     >
                         <Button height='8vh' isDisabled={disable}>
 
-                            <Text fontSize="20px">{currentQuestion.options[1]}</Text>
+                            <Text fontWeight="10" fontSize="20px">{currentQuestion.options[1]}</Text>
                         </Button>
 
                     </Box>
                     {/* option 3 */}
-                    <Box className={`box choose ${answerColor[2]}`}
+                    <Box className={`box ${chooseColor} ${answerColor[2]}`}
                         onClick={() => checkAnswer(currentQuestion.options[2], 2)}
                         display={{ base: "flex", md: "flex" }}
                         flexDir="column"
@@ -313,12 +318,12 @@ export const RightBox = () => {
                     >
                         <Button height='8vh' isDisabled={disable}>
 
-                            <Text fontSize="20px">{currentQuestion.options[2]}</Text>
+                            <Text fontWeight="10" fontSize="20px">{currentQuestion.options[2]}</Text>
                         </Button>
 
                     </Box>
                     {/* option 4 */}
-                    <Box className={`box choose ${answerColor[3]}`}
+                    <Box className={`box ${chooseColor} ${answerColor[3]}`}
 
                         onClick={() => checkAnswer(currentQuestion.options[3], 3)}
                         display={{ base: "flex", md: "flex" }}
@@ -330,7 +335,7 @@ export const RightBox = () => {
                         cursor="pointer"
                     >
                         <Button height='8vh' isDisabled={disable}>
-                            <Text fontSize="20px">{currentQuestion.options[3]}</Text>
+                            <Text fontWeight="10" fontSize="20px">{currentQuestion.options[3]}</Text>
 
                         </Button>
 
